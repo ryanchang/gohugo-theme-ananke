@@ -8,31 +8,31 @@
   <article class="flex-l flex-wrap justify-between mw8 center ph3">
 
     <header class="mt4 w-100">
-      <p class="f6 b helvetica tracked">
+      <!--
+        <p class="f6 b helvetica tracked">
           {{/*
           CurrentSection allows us to use the section title instead of inferring from the folder.
           https://gohugo.io/variables/page/#section-variables-and-methods
           */}}
         {{with .CurrentSection.Title }}{{. | upper }}{{end}}
-      </p>
-      <h1 class="f1 athelas mb1">
+        </p>
+      -->
+      <!--
+        <h1 class="f1 athelas mb1">
         {{- .Title -}}
-      </h1>
+        </h1>
+      -->
       {{ with .Params.author }}
       <p class="tracked">
-          By <strong>
-          {{ if reflect.IsSlice . }}
-              {{ delimit . ", " | markdownify }}
-          {{else}}
-              {{ . | markdownify }}
-          {{ end }}
-          </strong>
+         By <strong>{{ . | markdownify }}</strong>
       </p>
       {{ end }}
       {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-      <time class="f6 mv4 dib tracked" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+      <!--
+        <time class="f6 mv4 dib tracked" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
         {{- .Date.Format "January 2, 2006" -}}
       </time>
+      -->
       {{/*
           Show "reading time" and "word count" but only if one of the following are true:
           1) A global config `params` value is set `show_reading_time = true`
@@ -57,6 +57,7 @@
       {{ end }}
       </div>
     </section>
+    <a href="{{ .Site.BaseURL }}" class="link db f6 pa2 br3 bg-mid-gray white dim w4 tc">回到首页</a>
 
     <aside class="w-30-l mt6-l">
       {{- partial "menu-contextual.html" . -}}
